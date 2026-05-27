@@ -20,11 +20,12 @@
         <span class="eyebrow">SMART × AIonOS</span>
         <h1>3-Minute Aviation AI Agents Command Demo</h1>
       </div>
-      
+      <div class="runtime-pill"><span id="clock">00:00</span> / 03:00</div>
     </section>
 
     <section class="hero glass">
       <div class="hero-left">
+        <span id="chapter" class="chapter">Commercial Airlines</span>
         <h2 id="headline">AI Agents convert fragmented airline operations into one predictive control layer.</h2>
         <p id="narrative">Press Start Demo to begin synchronized narration, graphs, equations, agent widgets and accelerated background video.</p>
       </div>
@@ -37,6 +38,21 @@
       </div>
     </section>
 
+    <aside class="agent-panel glass">
+      <div class="panel-title-row">
+        <div>
+          <span class="eyebrow">ACTIVE AI AGENT WIDGET</span>
+          <h3 id="activeAgent">Predictive Aircraft Maintenance</h3>
+        </div>
+        <div id="agentStatus" class="status live">LIVE</div>
+      </div>
+      <div id="agentGrid" class="agent-grid"></div>
+      <div class="equation-card">
+        <div class="mini-label">Decision Equation</div>
+        <div id="equation" class="equation">Risk(t)=P(failure|telemetry, cycles, anomaly)</div>
+      </div>
+      <div class="agent-log" id="agentLog"></div>
+    </aside>
 
     <aside class="analytics-panel glass">
       <div class="panel-title-row">
@@ -56,7 +72,6 @@
           <canvas id="chartB" width="420" height="150"></canvas>
         </div>
       </div>
-      <div id="kpiStrip" class="kpi-strip"></div>
     </aside>
 
     <section class="bottom-console glass">
