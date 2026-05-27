@@ -44,7 +44,6 @@ const el = {
   playBtn: document.getElementById('playBtn'),
   pauseBtn: document.getElementById('pauseBtn'),
   resetBtn: document.getElementById('resetBtn'),
-  muteBtn: document.getElementById('muteBtn'),
   progress: document.getElementById('progress'),
   clock: document.getElementById('clock'),
   heroMetric: document.getElementById('heroMetric')
@@ -269,13 +268,6 @@ function stopAtEnd() {
 el.playBtn.addEventListener('click', startDemo);
 el.pauseBtn.addEventListener('click', pauseDemo);
 el.resetBtn.addEventListener('click', resetDemo);
-el.muteBtn.addEventListener('click', () => {
-  narrationOn = !narrationOn;
-  audio.muted = !narrationOn;
-  el.muteBtn.textContent = `Narration: ${narrationOn ? 'On' : 'Off'}`;
-  if (!narrationOn && 'speechSynthesis' in window) window.speechSynthesis.cancel();
-});
-
 fetch('data/scenes.json')
   .then(r => r.json())
   .then(data => { scenes = data; renderScene(scenes[0], 0); })
