@@ -5,7 +5,7 @@
     "end": 18,
     "chapter": "AIonOS Aviation Control Layer",
     "headline": "Ten AI agents move aviation from reactive coordination to predictive orchestration.",
-    "narration": "In this three minute executive demo, the original video audio is removed. AIonOS overlays ten aviation AI agents from commercial and business aviation into one transparent command layer. The background accelerates to end exactly with the narration.",
+    "narration": "In this three minute executive demo, the original video audio is removed. AIonOS overlays ten aviation AI agents from commercial and business aviation into one transparent command layer. ",
     "activeAgent": "Aviation Command Orchestrator",
     "equation": "Outcome = \u03a3(agent decisions) \u00d7 context confidence \u2212 operational drag",
     "chartType": "COLUMN",
