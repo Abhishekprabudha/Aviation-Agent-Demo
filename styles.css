@@ -17,7 +17,7 @@ html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background:
 .cinematic-grade { position: absolute; inset: 0; background: radial-gradient(circle at 62% 40%, rgba(86,213,255,0.12), transparent 34%), linear-gradient(90deg, rgba(3,6,16,0.88), rgba(3,6,16,0.22) 52%, rgba(3,6,16,0.82)); }
 .scanlines { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 100% 4px; opacity: 0.14; mix-blend-mode: screen; }
 .glass { border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(18px); box-shadow: 0 24px 80px rgba(0,0,0,0.35); }
-.topbar { position: absolute; top: 22px; left: 26px; right: 26px; min-height: 82px; border-radius: 24px; display: flex; align-items: center; padding: 20px 28px; }
+.topbar { position: absolute; top: 22px; left: 26px; right: 26px; height: 82px; border-radius: 24px; display: flex; justify-content: space-between; align-items: center; padding: 0 28px; }
 .eyebrow { color: var(--cyan); font-size: 11px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
 h1 { margin: 5px 0 0; font-size: 28px; line-height: 1; letter-spacing: -.04em; }
 .runtime-pill, .status { border: 1px solid rgba(255,255,255,.22); border-radius: 999px; padding: 10px 14px; font-size: 12px; font-weight: 900; background: rgba(255,255,255,.08); }
@@ -53,10 +53,10 @@ canvas { width: 100%; height: 118px; display: block; }
 .kpi { border-radius: 18px; padding: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.11); }
 .kpi .label { color: var(--muted); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
 .kpi .value { margin-top: 3px; font-size: 18px; font-weight: 900; letter-spacing: -.05em; color: #fff; }
-.bottom-console { position: absolute; left: 26px; right: 26px; bottom: 22px; height: 64px; border-radius: 24px; padding: 12px 16px; display: grid; grid-template-columns: 130px 90px 90px 1fr; align-items: center; gap: 12px; }
+.bottom-console { position: absolute; left: 26px; right: 26px; bottom: 22px; height: 64px; border-radius: 24px; padding: 12px 16px; display: grid; grid-template-columns: 130px 90px 90px 1fr 260px; align-items: center; gap: 12px; }
 button { height: 40px; border: 0; border-radius: 14px; background: linear-gradient(135deg, var(--cyan), var(--green)); color: #06101f; font-weight: 950; cursor: pointer; box-shadow: 0 12px 30px rgba(86,213,255,.18); }
 button:nth-child(n+2) { background: rgba(255,255,255,.1); color: white; border: 1px solid rgba(255,255,255,.16); box-shadow: none; }
 .progress-shell { height: 10px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.1); }
 .progress { width: 0%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), var(--green), var(--amber)); }
 .hint { color: rgba(255,255,255,.55); font-size: 11px; line-height: 1.25; }
-@media (max-width: 1180px) { h2 { font-size: 38px; } .bottom-console { grid-template-columns: 120px 80px 80px 1fr; } }
+@media (max-width: 1180px) { .agent-panel { width: 380px; } .analytics-panel { width: calc(100vw - 458px); } h2 { font-size: 38px; } .bottom-console { grid-template-columns: 120px 80px 80px 1fr; } .hint { display:none; } }
