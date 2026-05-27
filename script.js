@@ -40,7 +40,6 @@ const el = {
   chartBLabel: document.getElementById('chartBLabel'),
   chartA: document.getElementById('chartA'),
   chartB: document.getElementById('chartB'),
-  kpiStrip: document.getElementById('kpiStrip'),
   playBtn: document.getElementById('playBtn'),
   pauseBtn: document.getElementById('pauseBtn'),
   resetBtn: document.getElementById('resetBtn'),
@@ -203,7 +202,6 @@ function renderScene(scene, t) {
     el.chartALabel.textContent = scene.chartA;
     el.chartBLabel.textContent = scene.chartB;
     setAgentGrid(scene.activeAgent);
-    el.kpiStrip.innerHTML = Object.entries(scene.kpis).map(([k,v]) => `<div class="kpi"><div class="label">${k}</div><div class="value">${v}</div></div>`).join('');
     el.agentLog.innerHTML = scene.logs.map((l, i) => `<div class="log-row"><span>${l}</span><b>0${i+1}</b></div>`).join('');
     if (isPlaying && (!audio.duration || audio.error)) speakBrowser(scene.narration);
     lastSceneId = scene.id;
