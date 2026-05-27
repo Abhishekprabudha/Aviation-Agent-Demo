@@ -1,0 +1,3 @@
+dist/
+.render_tmp/
+.DS_Store

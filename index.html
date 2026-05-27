@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIonOS Aviation AI Agents Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="stage">
+    <video id="bgVideo" class="bg-video" src="assets/videos/aviation-ai-background-fast.mp4" muted playsinline preload="auto"></video>
+    <div class="cinematic-grade"></div>
+    <div class="scanlines"></div>
+
+    <section class="topbar glass">
+      <div>
+        <span class="eyebrow">SMART × AIonOS</span>
+        <h1>3-Minute Aviation AI Agents Command Demo</h1>
+      </div>
+      <div class="runtime-pill"><span id="clock">00:00</span> / 03:00</div>
+    </section>
+
+    <section class="hero glass">
+      <div class="hero-left">
+        <span id="chapter" class="chapter">Commercial Airlines</span>
+        <h2 id="headline">AI Agents convert fragmented airline operations into one predictive control layer.</h2>
+        <p id="narrative">Press Start Demo to begin synchronized narration, graphs, equations, agent widgets and accelerated background video.</p>
+      </div>
+      <div class="hero-right">
+        <div class="signal-ring">
+          <span></span><span></span><span></span>
+          <b id="heroMetric">10</b>
+          <small>AI Agents</small>
+        </div>
+      </div>
+    </section>
+
+    <aside class="agent-panel glass">
+      <div class="panel-title-row">
+        <div>
+          <span class="eyebrow">ACTIVE AI AGENT WIDGET</span>
+          <h3 id="activeAgent">Predictive Aircraft Maintenance</h3>
+        </div>
+        <div id="agentStatus" class="status live">LIVE</div>
+      </div>
+      <div id="agentGrid" class="agent-grid"></div>
+      <div class="equation-card">
+        <div class="mini-label">Decision Equation</div>
+        <div id="equation" class="equation">Risk(t)=P(failure|telemetry, cycles, anomaly)</div>
+      </div>
+      <div class="agent-log" id="agentLog"></div>
+    </aside>
+
+    <aside class="analytics-panel glass">
+      <div class="panel-title-row">
+        <div>
+          <span class="eyebrow">LIVE ANALYTICS</span>
+          <h3 id="analyticsTitle">Operational Impact</h3>
+        </div>
+        <div id="chartType" class="status">LINE + BAR</div>
+      </div>
+      <div class="charts">
+        <div class="chart-card">
+          <div class="mini-label" id="chartALabel">Failure Risk</div>
+          <canvas id="chartA" width="420" height="150"></canvas>
+        </div>
+        <div class="chart-card">
+          <div class="mini-label" id="chartBLabel">Cost Avoidance</div>
+          <canvas id="chartB" width="420" height="150"></canvas>
+        </div>
+      </div>
+      <div id="kpiStrip" class="kpi-strip"></div>
+    </aside>
+
+    <section class="bottom-console glass">
+      <button id="playBtn">Start Demo</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+      <button id="muteBtn">Narration: On</button>
+      <div class="progress-shell"><div id="progress" class="progress"></div></div>
+      <div class="hint">Best for recording: open on GitHub Pages → Start Demo → record tab/system audio.</div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
