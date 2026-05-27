@@ -27,13 +27,8 @@ audio.preload = 'auto';
 
 const el = {
   video: document.getElementById('bgVideo'),
-  chapter: document.getElementById('chapter'),
   headline: document.getElementById('headline'),
   narrative: document.getElementById('narrative'),
-  activeAgent: document.getElementById('activeAgent'),
-  agentGrid: document.getElementById('agentGrid'),
-  equation: document.getElementById('equation'),
-  agentLog: document.getElementById('agentLog'),
   analyticsTitle: document.getElementById('analyticsTitle'),
   chartType: document.getElementById('chartType'),
   chartALabel: document.getElementById('chartALabel'),
@@ -45,7 +40,6 @@ const el = {
   pauseBtn: document.getElementById('pauseBtn'),
   resetBtn: document.getElementById('resetBtn'),
   progress: document.getElementById('progress'),
-  clock: document.getElementById('clock'),
   heroMetric: document.getElementById('heroMetric')
 };
 
@@ -60,6 +54,7 @@ function currentScene(t) {
 }
 
 function setAgentGrid(active) {
+  if (!el.agentGrid) return;
   el.agentGrid.innerHTML = ALL_AGENTS.map(a => `
     <div class="agent-chip ${a === active ? 'active' : ''}">
       <span class="agent-dot"></span><span>${a}</span>
@@ -193,18 +188,17 @@ function speakBrowser(text) {
 function renderScene(scene, t) {
   if (!scene) return;
   if (scene.id !== lastSceneId) {
-    el.chapter.textContent = scene.chapter;
     el.headline.textContent = scene.headline;
     el.narrative.textContent = scene.narration;
-    el.activeAgent.textContent = scene.activeAgent;
-    el.equation.textContent = scene.equation;
+    if (el.activeAgent) el.activeAgent.textContent = scene.activeAgent;
+    if (el.equation) el.equation.textContent = scene.equation;
     el.analyticsTitle.textContent = scene.activeAgent;
     el.chartType.textContent = scene.chartType;
     el.chartALabel.textContent = scene.chartA;
     el.chartBLabel.textContent = scene.chartB;
     setAgentGrid(scene.activeAgent);
     el.kpiStrip.innerHTML = Object.entries(scene.kpis).map(([k,v]) => `<div class="kpi"><div class="label">${k}</div><div class="value">${v}</div></div>`).join('');
-    el.agentLog.innerHTML = scene.logs.map((l, i) => `<div class="log-row"><span>${l}</span><b>0${i+1}</b></div>`).join('');
+    if (el.agentLog) el.agentLog.innerHTML = scene.logs.map((l, i) => `<div class="log-row"><span>${l}</span><b>0${i+1}</b></div>`).join('');
     if (isPlaying && (!audio.duration || audio.error)) speakBrowser(scene.narration);
     lastSceneId = scene.id;
   }
@@ -217,7 +211,7 @@ function renderScene(scene, t) {
 function tick(now) {
   if (!startTs) startTs = now - pauseAt * 1000;
   const t = Math.min(TOTAL_DURATION, (now - startTs) / 1000);
-  el.clock.textContent = fmt(t);
+  if (el.clock) el.clock.textContent = fmt(t);
   el.progress.style.width = `${(t / TOTAL_DURATION) * 100}%`;
   renderScene(currentScene(t), t);
   if (t >= TOTAL_DURATION) { stopAtEnd(); return; }
@@ -254,7 +248,7 @@ function resetDemo() {
   pauseDemo();
   pauseAt = 0; startTs = null; lastSceneId = null;
   el.video.currentTime = 0; audio.currentTime = 0;
-  el.progress.style.width = '0%'; el.clock.textContent = '00:00';
+  el.progress.style.width = '0%'; if (el.clock) el.clock.textContent = '00:00';
   renderScene(scenes[0], 0);
 }
 

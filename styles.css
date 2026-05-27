@@ -32,7 +32,7 @@ p { margin: 0; color: var(--muted); font-size: 17px; line-height: 1.45; max-widt
 .signal-ring b { font-size: 54px; letter-spacing: -.08em; } .signal-ring small { position: absolute; bottom: 42px; color: var(--muted); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .16em; }
 @keyframes pulse { 0%,100% { transform: scale(.98); opacity: .45; } 50% { transform: scale(1.05); opacity: 1; } }
 .agent-panel { position: absolute; right: 26px; top: 126px; width: 430px; height: calc(100vh - 276px); min-height: 470px; border-radius: 32px; padding: 22px; overflow: hidden; }
-.analytics-panel { position: absolute; left: 26px; bottom: 106px; width: min(790px, calc(100vw - 510px)); height: 292px; border-radius: 32px; padding: 22px; }
+.analytics-panel { position: absolute; left: 26px; bottom: 106px; width: min(1020px, calc(100vw - 52px)); height: 292px; border-radius: 32px; padding: 22px; }
 .panel-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
 h3 { margin: 5px 0 0; font-size: 22px; line-height: 1.04; letter-spacing: -.04em; }
 .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-bottom: 16px; }
