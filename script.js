@@ -215,7 +215,7 @@ function renderScene(scene, t) {
 function tick(now) {
   if (!startTs) startTs = now - pauseAt * 1000;
   const t = Math.min(TOTAL_DURATION, (now - startTs) / 1000);
-  el.clock.textContent = fmt(t);
+  if (el.clock) el.clock.textContent = fmt(t);
   el.progress.style.width = `${(t / TOTAL_DURATION) * 100}%`;
   renderScene(currentScene(t), t);
   if (t >= TOTAL_DURATION) { stopAtEnd(); return; }
@@ -252,7 +252,7 @@ function resetDemo() {
   pauseDemo();
   pauseAt = 0; startTs = null; lastSceneId = null;
   el.video.currentTime = 0; audio.currentTime = 0;
-  el.progress.style.width = '0%'; el.clock.textContent = '00:00';
+  el.progress.style.width = '0%'; if (el.clock) el.clock.textContent = '00:00';
   renderScene(scenes[0], 0);
 }
 
