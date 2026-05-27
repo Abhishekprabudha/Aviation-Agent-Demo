@@ -7,27 +7,43 @@
     "headline": "Ten AI agents move aviation from reactive coordination to predictive orchestration.",
     "narration": "In this three minute executive demo, the original video audio is removed. AIonOS overlays ten aviation AI agents from commercial and business aviation into one transparent command layer. The background accelerates to end exactly with the narration.",
     "activeAgent": "Aviation Command Orchestrator",
-    "equation": "Outcome = Σ(agent decisions) × context confidence − operational drag",
-    "chartType": "FLOW + SCORE",
+    "equation": "Outcome = \u03a3(agent decisions) \u00d7 context confidence \u2212 operational drag",
+    "chartType": "COLUMN",
     "chartA": "Agent Confidence",
     "chartB": "Operational Drag",
-    "kpis": {"Segments":"Commercial + Business", "Agents":"10", "Runtime":"180s"},
-    "logs": ["Video muted", "Playback speed calibrated", "Narration track armed"]
+    "kpis": {
+      "Segments": "Commercial + Business",
+      "Agents": "10",
+      "Runtime": "180s"
+    },
+    "logs": [
+      "Video muted",
+      "Playback speed calibrated",
+      "Narration track armed"
+    ]
   },
   {
     "id": "pdm",
     "start": 18,
     "end": 34,
     "chapter": "Commercial Airlines",
-    "headline": "Predictive Aircraft Maintenance detects degradation 48–72 hours before disruption.",
+    "headline": "Predictive Aircraft Maintenance detects degradation 48\u201372 hours before disruption.",
     "narration": "Agent one is predictive aircraft maintenance. It listens to vibration, temperature, pressure and oil signals, detects degradation patterns, scores component risk, and auto generates work orders before an aircraft on ground event hits the network.",
     "activeAgent": "Predictive Aircraft Maintenance",
     "equation": "RUL = f(vibration, temperature, pressure, oil, cycles)",
-    "chartType": "LINE + ANOMALY",
+    "chartType": "LINE",
     "chartA": "Component Health",
     "chartB": "AOG Risk",
-    "kpis": {"AOG Reduction":"30–40%", "MRO Saving":"~20%", "Lead Time":"48–72h"},
-    "logs": ["Sensor streams ingested", "Degradation trend isolated", "Work order recommended"]
+    "kpis": {
+      "AOG Reduction": "30\u201340%",
+      "MRO Saving": "~20%",
+      "Lead Time": "48\u201372h"
+    },
+    "logs": [
+      "Sensor streams ingested",
+      "Degradation trend isolated",
+      "Work order recommended"
+    ]
   },
   {
     "id": "yield",
@@ -37,12 +53,20 @@
     "headline": "Revenue Leakage Control & Yield AI recovers money hidden inside airline transaction flows.",
     "narration": "Agent two is revenue leakage control and yield AI. It scans PSS and DCS data for unbilled ancillaries, fare class mismatches, interline settlement gaps and no show revenue loss, then pushes prioritized recovery queues to revenue teams.",
     "activeAgent": "Revenue Leakage Control & Yield AI",
-    "equation": "Leakage = booked revenue − billed revenue − settled revenue",
-    "chartType": "WATERFALL + FUNNEL",
+    "equation": "Leakage = booked revenue \u2212 billed revenue \u2212 settled revenue",
+    "chartType": "WATERFALL",
     "chartA": "Leakage Recovery",
     "chartB": "Yield Dilution",
-    "kpis": {"Recovery Window":"≤90 days", "Ancillary Yield":"↑", "Settlement Accuracy":"↑"},
-    "logs": ["Fare mismatch flagged", "Ancillary gap surfaced", "Settlement exception routed"]
+    "kpis": {
+      "Recovery Window": "\u226490 days",
+      "Ancillary Yield": "\u2191",
+      "Settlement Accuracy": "\u2191"
+    },
+    "logs": [
+      "Fare mismatch flagged",
+      "Ancillary gap surfaced",
+      "Settlement exception routed"
+    ]
   },
   {
     "id": "cx",
@@ -52,27 +76,43 @@
     "headline": "AI-Native Passenger CX & Contact Centre turns disruption into proactive service recovery.",
     "narration": "Agent three is passenger CX and contact centre intelligence. Voice, chat, social sentiment, reservation status, loyalty context and OCC events converge so passengers are proactively informed, rebooked and served before call volume spikes.",
     "activeAgent": "AI-Native Passenger CX & Contact Centre",
-    "equation": "CX Priority = sentiment × disruption severity × loyalty context",
-    "chartType": "QUEUE + SENTIMENT",
+    "equation": "CX Priority = sentiment \u00d7 disruption severity \u00d7 loyalty context",
+    "chartType": "PIE",
     "chartA": "Call Deflection",
     "chartB": "Sentiment Risk",
-    "kpis": {"Call Deflection":"~40%", "Cost-to-Serve":"−30%", "NPS":"↑"},
-    "logs": ["Sentiment classified", "Rebooking path prepared", "Passenger notification generated"]
+    "kpis": {
+      "Call Deflection": "~40%",
+      "Cost-to-Serve": "\u221230%",
+      "NPS": "\u2191"
+    },
+    "logs": [
+      "Sentiment classified",
+      "Rebooking path prepared",
+      "Passenger notification generated"
+    ]
   },
   {
     "id": "fuel",
     "start": 66,
     "end": 82,
     "chapter": "Commercial Airlines",
-    "headline": "Fuel Optimisation & Carbon Intelligence improves each sector’s route, uplift and emissions profile.",
+    "headline": "Fuel Optimisation & Carbon Intelligence improves each sector\u2019s route, uplift and emissions profile.",
     "narration": "Agent four is fuel optimisation and carbon intelligence. It compares uplift, climb, cruise, descent, route, aircraft weight and weather, then recommends fuel optimal options while calculating carbon output per tail and route for compliance reporting.",
     "activeAgent": "Fuel Optimisation & Carbon Intelligence",
     "equation": "Fuel Burn = f(weight, route, wind, altitude, thrust)",
-    "chartType": "AREA + CARBON",
+    "chartType": "AREA",
     "chartA": "Fuel Burn",
-    "chartB": "CO₂ per Route",
-    "kpis": {"Fuel Saving":"2–4%", "Carbon Visibility":"Per tail", "Compliance":"CORSIA-ready"},
-    "logs": ["Weather layer updated", "Route alternatives scored", "Carbon ledger refreshed"]
+    "chartB": "CO\u2082 per Route",
+    "kpis": {
+      "Fuel Saving": "2\u20134%",
+      "Carbon Visibility": "Per tail",
+      "Compliance": "CORSIA-ready"
+    },
+    "logs": [
+      "Weather layer updated",
+      "Route alternatives scored",
+      "Carbon ledger refreshed"
+    ]
   },
   {
     "id": "crew",
@@ -83,11 +123,19 @@
     "narration": "Agent five is crew scheduling and operations AI. It optimises pairing and rostering against duty, rest and demand constraints. During disruption, it ranks recovery options by cost, legality, availability and network impact.",
     "activeAgent": "Crew Scheduling & Operations AI",
     "equation": "Best Crew Plan = argmin(cost + delay + illegality penalty)",
-    "chartType": "GANTT + OPTIMIZER",
+    "chartType": "BAR",
     "chartA": "Legal Pairings",
     "chartB": "Recovery Cost",
-    "kpis": {"Irregular Ops Cost":"−25%", "Decision Speed":"↑", "Productivity":"↑"},
-    "logs": ["FDP constraint checked", "Crew swap ranked", "OCC recovery option pushed"]
+    "kpis": {
+      "Irregular Ops Cost": "\u221225%",
+      "Decision Speed": "\u2191",
+      "Productivity": "\u2191"
+    },
+    "logs": [
+      "FDP constraint checked",
+      "Crew swap ranked",
+      "OCC recovery option pushed"
+    ]
   },
   {
     "id": "trip",
@@ -97,12 +145,20 @@
     "headline": "AI On-Demand Scheduling & Trip Intelligence compresses charter quote creation from hours to seconds.",
     "narration": "Agent six is on demand scheduling and trip intelligence. Aircraft availability, crew qualification, airport slots, route constraints and NOTAMs are matched instantly to build optimised quotes and booking workflows for private aviation operators.",
     "activeAgent": "AI On-Demand Scheduling & Trip Intelligence",
-    "equation": "Trip Score = aircraft fit + crew fit + slot feasibility − constraint risk",
-    "chartType": "SCATTER + MATCHING",
+    "equation": "Trip Score = aircraft fit + crew fit + slot feasibility \u2212 constraint risk",
+    "chartType": "SCATTER",
     "chartA": "Quote Speed",
     "chartB": "Constraint Risk",
-    "kpis": {"Booking Turnaround":"−70%", "Aircraft Utilisation":"↑", "Empty Leg Fill":"↑"},
-    "logs": ["Aircraft availability matched", "NOTAM constraint parsed", "Quote generated"]
+    "kpis": {
+      "Booking Turnaround": "\u221270%",
+      "Aircraft Utilisation": "\u2191",
+      "Empty Leg Fill": "\u2191"
+    },
+    "logs": [
+      "Aircraft availability matched",
+      "NOTAM constraint parsed",
+      "Quote generated"
+    ]
   },
   {
     "id": "cbm",
@@ -113,11 +169,19 @@
     "narration": "Agent seven is condition based maintenance. It monitors avionics and airframe sensor data, detects deviation thresholds and recommends maintenance only when health evidence justifies action, improving aircraft availability and reducing unscheduled work.",
     "activeAgent": "Condition-Based Maintenance",
     "equation": "Maintenance Trigger = health deviation > threshold confidence",
-    "chartType": "CONTROL CHART",
+    "chartType": "HISTOGRAM",
     "chartA": "Health Deviation",
     "chartB": "Maintenance Need",
-    "kpis": {"Unscheduled MX":"−30%", "Availability":"↑", "AOG Events":"↓"},
-    "logs": ["Avionics trend analysed", "Threshold breach checked", "Maintenance action recommended"]
+    "kpis": {
+      "Unscheduled MX": "\u221230%",
+      "Availability": "\u2191",
+      "AOG Events": "\u2193"
+    },
+    "logs": [
+      "Avionics trend analysed",
+      "Threshold breach checked",
+      "Maintenance action recommended"
+    ]
   },
   {
     "id": "vip",
@@ -127,12 +191,20 @@
     "headline": "VIP Passenger Personalisation AI turns every trip into a memory-aware concierge experience.",
     "narration": "Agent eight is VIP passenger personalisation. Catering, cabin configuration, ground transport, preferred FBOs and dietary requirements are converted into dynamic preference profiles that update after every journey and trigger service actions automatically.",
     "activeAgent": "VIP Passenger Personalisation AI",
-    "equation": "Preference Match = profile memory × trip context × service availability",
-    "chartType": "RADAR + PROFILE",
+    "equation": "Preference Match = profile memory \u00d7 trip context \u00d7 service availability",
+    "chartType": "RADAR",
     "chartA": "Preference Match",
     "chartB": "Upsell Propensity",
-    "kpis": {"Retention":"↑", "Upsell Conversion":"↑", "Repeat Booking":"↑"},
-    "logs": ["Preference profile recalled", "Cabin setup personalised", "Concierge task issued"]
+    "kpis": {
+      "Retention": "\u2191",
+      "Upsell Conversion": "\u2191",
+      "Repeat Booking": "\u2191"
+    },
+    "logs": [
+      "Preference profile recalled",
+      "Cabin setup personalised",
+      "Concierge task issued"
+    ]
   },
   {
     "id": "ground",
@@ -142,12 +214,20 @@
     "headline": "Ground Ops Turnaround Intelligence resequences fuelling, catering, cleaning and handling in real time.",
     "narration": "Agent nine is ground operations turnaround intelligence. It tracks fuelling, catering, cleaning and handling agents against plan, identifies slippage and resequences ramp tasks to protect departure time and reduce incident risk.",
     "activeAgent": "Ground Ops Turnaround Intelligence",
-    "equation": "Turnaround Risk = Σ(task delay × critical path weight)",
-    "chartType": "CRITICAL PATH",
+    "equation": "Turnaround Risk = \u03a3(task delay \u00d7 critical path weight)",
+    "chartType": "FUNNEL",
     "chartA": "Task Completion",
     "chartB": "Ramp Risk",
-    "kpis": {"Turnaround Time":"↓", "Ramp Incidents":"−35%", "Efficiency":"↑"},
-    "logs": ["Fuel task delayed", "Catering resequenced", "Departure path protected"]
+    "kpis": {
+      "Turnaround Time": "\u2193",
+      "Ramp Incidents": "\u221235%",
+      "Efficiency": "\u2191"
+    },
+    "logs": [
+      "Fuel task delayed",
+      "Catering resequenced",
+      "Departure path protected"
+    ]
   },
   {
     "id": "route",
@@ -158,10 +238,18 @@
     "narration": "Agent ten is AI flight planning and route optimisation. Live weather, NOTAMs, wind patterns and airspace restrictions are fused into sector level recommendations, enabling reroute decisions, lower fuel burn, better flight time and measurable carbon reduction.",
     "activeAgent": "AI Flight Planning & Route Optimisation",
     "equation": "Optimal Route = argmin(fuel + time + weather risk + airspace constraints)",
-    "chartType": "ROUTE + CO₂",
+    "chartType": "BUBBLE",
     "chartA": "Route Efficiency",
-    "chartB": "CO₂ Reduction",
-    "kpis": {"Fuel Saving":"3–6%", "Flight Time":"↓", "CO₂ Tracking":"Per leg"},
-    "logs": ["Wind corridor scored", "Airspace restriction checked", "Optimal route recommended"]
+    "chartB": "CO\u2082 Reduction",
+    "kpis": {
+      "Fuel Saving": "3\u20136%",
+      "Flight Time": "\u2193",
+      "CO\u2082 Tracking": "Per leg"
+    },
+    "logs": [
+      "Wind corridor scored",
+      "Airspace restriction checked",
+      "Optimal route recommended"
+    ]
   }
 ]

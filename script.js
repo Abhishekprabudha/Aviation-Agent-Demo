@@ -78,30 +78,91 @@ function drawChart(canvas, t, seed, mode) {
   for (let y = 30; y < h; y += 32) {
     ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
   }
+
   const vals = Array.from({ length: 18 }, (_, i) => {
     const wave = Math.sin((i + t * 0.18 + seed) * 0.72) * 0.21 + Math.cos((i + seed) * 0.41) * 0.09;
     return Math.max(0.08, Math.min(0.94, 0.52 + wave + (seed % 3) * 0.05));
   });
-  if (/WATERFALL|FUNNEL|GANTT|CRITICAL/.test(mode)) {
+
+  const drawBars = (stacked = false, horizontal = false) => {
     vals.slice(0, 12).forEach((v, i) => {
-      const bw = w / 15;
-      const x = 18 + i * (bw + 7);
-      const bh = v * (h - 28);
-      const grad = ctx.createLinearGradient(0, h - bh, 0, h);
+      const bw = horizontal ? (w - 40) * v : w / 15;
+      const bh = horizontal ? h / 16 : v * (h - 28);
+      const x = horizontal ? 18 : 18 + i * (w / 15 + 7);
+      const y = horizontal ? 10 + i * (h / 15) : h - bh - 8;
+      const grad = ctx.createLinearGradient(0, y, horizontal ? x + bw : x, horizontal ? y : h);
       grad.addColorStop(0, 'rgba(86,213,255,.88)');
       grad.addColorStop(1, 'rgba(118,255,181,.45)');
       ctx.fillStyle = grad;
-      ctx.fillRect(x, h - bh - 8, bw, bh);
+      if (stacked && !horizontal) {
+        const half = bh * 0.6;
+        ctx.fillRect(x, h - half - 8, bw, half);
+        ctx.fillStyle = 'rgba(118,255,181,.35)';
+        ctx.fillRect(x, h - bh - 8, bw, bh - half);
+      } else {
+        ctx.fillRect(x, y, bw, bh);
+      }
     });
+  };
+
+  if (/PIE|DOUGHNUT/.test(mode)) {
+    const cx = w / 2, cy = h / 2 + 5, r = Math.min(w, h) * 0.34;
+    let start = -Math.PI / 2;
+    vals.slice(0, 5).forEach((v, i) => {
+      const slice = (v / vals.slice(0, 5).reduce((a, b) => a + b, 0)) * Math.PI * 2;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, start, start + slice);
+      ctx.closePath();
+      ctx.fillStyle = `hsla(${180 + i * 25}, 95%, 65%, .85)`;
+      ctx.fill();
+      start += slice;
+    });
+    if (/DOUGHNUT/.test(mode)) {
+      ctx.fillStyle = 'rgba(4,10,22,0.95)';
+      ctx.beginPath();
+      ctx.arc(cx, cy, r * 0.45, 0, Math.PI * 2);
+      ctx.fill();
+    }
   } else if (/RADAR/.test(mode)) {
-    const cx = w/2, cy = h/2 + 6, r = Math.min(w,h)*0.38;
+    const cx = w / 2, cy = h / 2 + 6, r = Math.min(w, h) * 0.38;
     ctx.strokeStyle = 'rgba(86,213,255,.32)';
     ctx.beginPath();
-    for(let i=0;i<6;i++){ const a=(-Math.PI/2)+i*Math.PI/3; const x=cx+Math.cos(a)*r; const y=cy+Math.sin(a)*r; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
+    for (let i = 0; i < 6; i++) { const a = (-Math.PI / 2) + i * Math.PI / 3; const x = cx + Math.cos(a) * r; const y = cy + Math.sin(a) * r; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
     ctx.closePath(); ctx.stroke();
     ctx.fillStyle = 'rgba(86,213,255,.2)'; ctx.beginPath();
-    for(let i=0;i<6;i++){ const a=(-Math.PI/2)+i*Math.PI/3; const rr=r*(0.48+vals[i]*0.42); const x=cx+Math.cos(a)*rr; const y=cy+Math.sin(a)*rr; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }
-    ctx.closePath(); ctx.fill(); ctx.strokeStyle='rgba(118,255,181,.92)'; ctx.stroke();
+    for (let i = 0; i < 6; i++) { const a = (-Math.PI / 2) + i * Math.PI / 3; const rr = r * (0.48 + vals[i] * 0.42); const x = cx + Math.cos(a) * rr; const y = cy + Math.sin(a) * rr; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }
+    ctx.closePath(); ctx.fill(); ctx.strokeStyle = 'rgba(118,255,181,.92)'; ctx.stroke();
+  } else if (/SCATTER|BUBBLE/.test(mode)) {
+    vals.slice(0, 14).forEach((v, i) => {
+      const x = 16 + (i / 13) * (w - 32);
+      const y = h - (v * (h - 26)) - 8;
+      const rr = /BUBBLE/.test(mode) ? 4 + ((vals[i + 1] || 0.5) * 10) : 4;
+      ctx.beginPath();
+      ctx.arc(x, y, rr, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(86,213,255,.65)';
+      ctx.fill();
+    });
+  } else if (/FUNNEL/.test(mode)) {
+    const levels = vals.slice(0, 6);
+    levels.forEach((v, i) => {
+      const topW = (w - 40) * (0.95 - i * 0.12);
+      const botW = (w - 40) * (0.83 - i * 0.12);
+      const y = 12 + i * ((h - 24) / 6);
+      const hh = (h - 24) / 6 - 4;
+      ctx.beginPath();
+      ctx.moveTo((w - topW) / 2, y);
+      ctx.lineTo((w + topW) / 2, y);
+      ctx.lineTo((w + botW) / 2, y + hh);
+      ctx.lineTo((w - botW) / 2, y + hh);
+      ctx.closePath();
+      ctx.fillStyle = `hsla(${170 + i * 8}, 90%, ${55 - i * 3}%, .82)`;
+      ctx.fill();
+    });
+  } else if (/WATERFALL|HISTOGRAM|COLUMN/.test(mode)) {
+    drawBars(/WATERFALL/.test(mode));
+  } else if (/BAR/.test(mode)) {
+    drawBars(false, true);
   } else {
     const grad = ctx.createLinearGradient(0, 0, w, 0);
     grad.addColorStop(0, 'rgba(86,213,255,.98)');
@@ -113,7 +174,9 @@ function drawChart(canvas, t, seed, mode) {
       i ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
     });
     ctx.stroke();
-    ctx.fillStyle = 'rgba(86,213,255,.16)'; ctx.lineTo(w,h); ctx.lineTo(0,h); ctx.closePath(); ctx.fill();
+    if (/AREA/.test(mode)) {
+      ctx.fillStyle = 'rgba(86,213,255,.16)'; ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.closePath(); ctx.fill();
+    }
   }
 }
 
